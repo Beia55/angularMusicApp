@@ -10,6 +10,8 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { MusicComponent } from './music/music.component';
+import { MusicAddComponent } from './music/music-add.component';
+import { MusicEditComponent } from './music/music-edit.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { MusicComponent } from './music/music.component';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    MusicComponent
+    MusicComponent,
+    MusicAddComponent,
+    MusicEditComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -29,6 +33,8 @@ import { MusicComponent } from './music/music.component';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'music', component: MusicComponent },
+      { path: 'music-add', component: MusicAddComponent },
+      { path: 'music-edit', component: MusicEditComponent },
     ])
   ],
   providers: [],

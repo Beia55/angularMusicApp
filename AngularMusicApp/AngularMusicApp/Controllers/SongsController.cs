@@ -10,7 +10,7 @@ using AngularMusicApp.Models;
 
 namespace AngularMusicApp.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class SongsController : ControllerBase
     {
@@ -29,61 +29,38 @@ namespace AngularMusicApp.Controllers
         }
 
         // PUT: api/Songs/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutSong(Guid id, Song song)
+        public async Task PutSong(Guid id, [FromBody] Song song)
         {
-            if (id != song.ID)
+            if (id == song.ID)
             {
-                return BadRequest();
-            }
-
-            _context.Entry(song).State = EntityState.Modified;
-
-            try
-            {
+                _context.Entry(song).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!SongExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
         }
 
         // POST: api/Songs
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Song>> PostSong(Song song)
+        public async Task PostSong([FromBody] Song song)
         {
+            if (song.ID == Guid.Empty) {
+                song.ID = Guid.NewGuid();
+            }
+
             _context.Song.Add(song);
             await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetSong", new { id = song.ID }, song);
         }
 
         // DELETE: api/Songs/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteSong(Guid id)
+        public async Task DeleteSong(Guid id)
         {
-            var song = await _context.Song.FindAsync(id);
-            if (song == null)
+            Song song = await _context.Song.FindAsync(id);
+            if (song != null)
             {
-                return NotFound();
+                _context.Song.Remove(song);
+                await _context.SaveChangesAsync();
             }
-
-            _context.Song.Remove(song);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
         }
 
         private bool SongExists(Guid id)

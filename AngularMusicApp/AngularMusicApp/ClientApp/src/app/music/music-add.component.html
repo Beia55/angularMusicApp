@@ -1,0 +1,11 @@
+
+<h1 id="tableLabel">Add song</h1>
+
+<p>Name</p>
+<input [(ngModel)]="song.name" />
+<p>Year</p>
+<input [(ngModel)]="song.year" />
+<p>Composer</p>
+<input [(ngModel)]="song.composer" />
+
+<button class="btn btn-primary" (click)="saveSong()">Save Song</button>

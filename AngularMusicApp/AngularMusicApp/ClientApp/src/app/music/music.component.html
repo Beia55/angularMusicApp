@@ -4,6 +4,8 @@
 
 <p *ngIf="!songs"><em>Loading...</em></p>
 
+<button class="btn btn-primary" [routerLink]="['/music-add']">Add song</button>
+
 <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="songs">
   <thead>
     <tr>
@@ -11,6 +13,8 @@
       <th>Name</th>
       <th>Year</th>
       <th>Composer</th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -19,6 +23,13 @@
       <td>{{ song.name }}</td>
       <td>{{ song.year }}</td>
       <td>{{ song.composer }}</td>
+      <td>
+        <button class="btn btn-primary" (click)="deleteSong(song)">delete</button><--->
+        <button class="btn btn-primary" (click)="editSong(song)">edit</button><--->
+        <!--<button class="btn btn-primary" [routerLink]="['music/music-edit/,song.id']">edit</button>-->
+      </td>
     </tr>
   </tbody>
 </table>
+
+
