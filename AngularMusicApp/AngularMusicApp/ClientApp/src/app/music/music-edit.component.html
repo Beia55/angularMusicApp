@@ -1,8 +1,13 @@
 <h1 id="tableLabel">Edit song</h1>
 
 
-<p>Name</p> <input [(ngModel)]="song.name" />
-<p>Year</p> <input [(ngModel)]="song.year" />
-<p>Composer</p> <input [(ngModel)]="song.composer" />
+<p>Name</p>
+<input [(ngModel)]="song.name" />
+<p>Year</p>
+<input [(ngModel)]="song.year" />
+<p>Composer</p>
+<input [(ngModel)]="song.composer" />
 
-<button class="btn btn-primary" (click)="editSong()">Edit Song</button>
+<button class="btn btn-primary" (click)="saveEditedSong()">Edit Song</button>
+<button class="btn btn-primary" [routerLink]="['/music']">Back to list</button>
+

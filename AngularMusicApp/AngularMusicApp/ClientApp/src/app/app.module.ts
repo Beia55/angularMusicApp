@@ -12,6 +12,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { MusicComponent } from './music/music.component';
 import { MusicAddComponent } from './music/music-add.component';
 import { MusicEditComponent } from './music/music-edit.component';
+import { MusicReadComponent } from './music/music-read.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { MusicEditComponent } from './music/music-edit.component';
     FetchDataComponent,
     MusicComponent,
     MusicAddComponent,
-    MusicEditComponent
+    MusicEditComponent,
+    MusicReadComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -35,6 +37,7 @@ import { MusicEditComponent } from './music/music-edit.component';
       { path: 'music', component: MusicComponent },
       { path: 'music-add', component: MusicAddComponent },
       { path: 'music-edit', component: MusicEditComponent },
+      { path: 'music-read', component: MusicReadComponent },
     ])
   ],
   providers: [],

@@ -5,11 +5,11 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-music-edit',
-  templateUrl: './music-edit.component.html'
+  selector: 'app-music-read',
+  templateUrl: './music-read.component.html'
 })
 
-export class MusicEditComponent implements OnInit {
+export class MusicReadComponent implements OnInit {
 
   public id: string;
   public song: Song = <Song>{};
@@ -32,13 +32,6 @@ export class MusicEditComponent implements OnInit {
     this.http.get<Song>(this.baseUrl + 'api/songs/' + this.id).subscribe(result => {
       this.song = result;
     }, error => console.error(error))
-  }
-
-  public saveEditedSong() {
-    this.http.put<Song>(this.baseUrl + 'api/songs/' + this.id, this.song).subscribe(result => {
-      this.router.navigateByUrl("/music");  
-    }, error => console.error(error))
-
   }
 
 }
