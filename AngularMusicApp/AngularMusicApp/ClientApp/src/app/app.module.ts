@@ -13,6 +13,16 @@ import { MusicComponent } from './music/music.component';
 import { MusicAddComponent } from './music/music-add.component';
 import { MusicEditComponent } from './music/music-edit.component';
 import { MusicReadComponent } from './music/music-read.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +48,15 @@ import { MusicReadComponent } from './music/music-read.component';
       { path: 'music-add', component: MusicAddComponent },
       { path: 'music-edit', component: MusicEditComponent },
       { path: 'music-read', component: MusicReadComponent },
-    ])
+    ]),
+    BrowserAnimationsModule,
+    MatSlideToggleModule,
+    MatSliderModule,
+    MatTableModule,
+    MatButtonModule,
+    MatInputModule,
+    MatCardModule,
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

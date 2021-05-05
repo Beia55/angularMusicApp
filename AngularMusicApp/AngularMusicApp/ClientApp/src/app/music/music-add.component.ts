@@ -3,8 +3,11 @@ import { HttpClient } from '@angular/common/http';
 import { Song } from './music.models';
 import { Router } from '@angular/router';
 
+export class InputOverviewExample { }
+
 @Component({
   selector: 'app-music-add',
+  styleUrls: ['./music-add.component.css'],
   templateUrl: './music-add.component.html'
 })
 

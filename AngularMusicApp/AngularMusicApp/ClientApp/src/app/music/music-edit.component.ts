@@ -4,8 +4,11 @@ import { Song } from './music.models';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 
+export class InputOverviewExample { }
+
 @Component({
   selector: 'app-music-edit',
+  styleUrls: ['./music-edit.component.css'],
   templateUrl: './music-edit.component.html'
 })
 

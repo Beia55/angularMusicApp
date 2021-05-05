@@ -4,31 +4,49 @@
 
 <p *ngIf="!songs"><em>Loading...</em></p>
 
-<button class="btn btn-primary" [routerLink]="['/music-add']">Add song</button>
+  <div class="example-button-row">
+    <button mat-raised-button color="accent" [routerLink]="['/music-add']">Add song</button>
+  </div>
 
-<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="songs">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Year</th>
-      <th>Composer</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let song of songs">
-      <td>{{ song.id }}</td>
-      <td>{{ song.name }}</td>
-      <td>{{ song.year }}</td>
-      <td>{{ song.composer }}</td>
-      <td><button class="btn btn-primary" (click)="deleteSong(song)">delete</button></td>
-      <td><a class="btn btn-primary" href="/music-edit?id={{song.id}}">edit</a></td>
-      <td><a class="btn btn-primary" href="/music-read?id={{song.id}}">read</a></td>
-    </tr>
-  </tbody>
-</table>
+  <table mat-table [dataSource]="songs" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let song"> {{song.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let song"> {{song.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="year">
+      <th mat-header-cell *matHeaderCellDef>Year</th>
+      <td mat-cell *matCellDef="let song"> {{song.year}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="composer">
+      <th mat-header-cell *matHeaderCellDef>Composer</th>
+      <td mat-cell *matCellDef="let song"> {{song.composer}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let song">
+        <section>
+          <div class="example-button-row">
+            <button mat-raised-button color="accent" (click)="deleteSong(song)">delete</button>
+            <a mat-raised-button color="accent" href="/music-edit?id={{song.id}}">edit</a>
+            <a mat-raised-button color="accent" href="/music-read?id={{song.id}}">read</a>
+          </div>
+        </section>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay "></tr>
+    <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay ;"></tr>
+  </table>
+
+
 
 

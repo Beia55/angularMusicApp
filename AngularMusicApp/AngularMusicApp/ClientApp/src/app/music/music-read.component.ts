@@ -4,8 +4,12 @@ import { Song } from './music.models';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 
+export class InputOverviewExample { }
+export class CardFancyExample { }
+
 @Component({
   selector: 'app-music-read',
+  styleUrls: ['./music-read.component.css'],
   templateUrl: './music-read.component.html'
 })
 

@@ -1,13 +1,35 @@
 
 <h1 id="tableLabel">Add song</h1>
 
-<p>Name</p>
-<input [(ngModel)]="song.name" />
-<p>Year</p>
-<input [(ngModel)]="song.year" />
-<p>Composer</p>
-<input [(ngModel)]="song.composer" />
 
-<button class="btn btn-primary" (click)="saveSong()">Save Song</button>
-<button class="btn btn-primary" [routerLink]="['/music']">Back to list</button>
+<table class="example-full-width" cellspacing="0">
+  <tr>
+    <td>
+      <mat-form-field class="example-full-width">
+        <mat-label>Song's name</mat-label>
+        <input matInput [(ngModel)]="song.name" />
+      </mat-form-field>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <mat-form-field class="example-full-width">
+        <mat-label>Year</mat-label>
+        <input matInput [(ngModel)]="song.year" />
+      </mat-form-field>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <mat-form-field class="example-full-width">
+        <mat-label>Composer</mat-label>
+        <input matInput [(ngModel)]="song.composer" />
+      </mat-form-field>
+    </td>
+  </tr>
+</table>
 
+  <div class="example-button-row">
+    <button mat-raised-button color="accent" (click)="saveSong()">Save Song</button>
+    <button mat-raised-button color="accent" [routerLink]="['/music']">Back to list</button>
+  </div>
