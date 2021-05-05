@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import '@angular/material/prebuilt-themes/indigo-pink.css';
+@import '@angular/material/prebuilt-themes/purple-green.css';
 
 /* Provide sufficient contrast against white background */
 a {
@@ -18,4 +18,11 @@ code {
 }
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  color:aliceblue;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-image: url(https://images2.alphacoders.com/865/thumb-1920-865869.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
