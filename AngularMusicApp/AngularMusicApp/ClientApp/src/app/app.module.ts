@@ -22,6 +22,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -46,8 +48,8 @@ import { MatListModule } from '@angular/material/list';
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'music', component: MusicComponent },
       { path: 'music-add', component: MusicAddComponent },
-      { path: 'music-edit', component: MusicEditComponent },
-      { path: 'music-read', component: MusicReadComponent },
+      { path: 'music-edit/:id', component: MusicEditComponent },
+      { path: 'music-read/:id', component: MusicReadComponent },
     ]),
     BrowserAnimationsModule,
     MatSlideToggleModule,
@@ -57,6 +59,8 @@ import { MatListModule } from '@angular/material/list';
     MatInputModule,
     MatCardModule,
     MatListModule,
+    MatIconModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

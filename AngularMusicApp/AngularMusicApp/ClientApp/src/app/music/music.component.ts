@@ -1,16 +1,10 @@
 import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-/*import { Song } from './music.models';
-*/
-export interface Song {
-  id: string;
-  name: string;
-  year: number;
-  composer: string;
-  actions: string
-}
+import { Song } from './music.models';
 
-export class ButtonOverviewExample { }
+
+
+/*export class ButtonOverviewExample { }*/
 
 
 @Component({
@@ -22,7 +16,7 @@ export class ButtonOverviewExample { }
 export class MusicComponent {
   public songs: Song[];
 
-  columnsToDisplay: string[] = ['id', 'name', 'year', 'composer','actions'];
+  columnsToDisplay: string[] = [ 'name', 'year', 'composer','actions'];
 
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
     this.loadMusic();
@@ -30,7 +24,7 @@ export class MusicComponent {
 
   public deleteSong(song: Song)
   {
-    var ans = confirm("Do you want to delete the song with the id: " + song.id);
+    var ans = confirm("Do you want to delete the song with the name: " + song.name);
     if (ans) {
       this.http.delete(this.baseUrl + 'api/songs/' + song.id).subscribe(result => {
         this.loadMusic();

@@ -3,4 +3,5 @@ export interface Song {
   name: string;
   year: number;
   composer: string;
+  actions: string
 }
