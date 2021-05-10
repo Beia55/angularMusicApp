@@ -26,8 +26,8 @@ export class MusicReadComponent implements OnInit {
 
   ngOnInit() {
 
-    this.activateRouter.queryParams.subscribe(params => {
-      this.id = params.id;
+    this.activateRouter.params.subscribe(param => {
+      this.id = param['id'];
       this.loadSong();
     });
   }
