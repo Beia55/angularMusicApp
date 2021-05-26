@@ -1,7 +1,7 @@
-import { Component, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import { Song } from './music.models';
 import { Router } from '@angular/router';
+import { MusicService } from './music.service';
 
 export class InputOverviewExample { }
 
@@ -16,12 +16,11 @@ export class MusicAddComponent {
   public song: Song = <Song>{};
 
   constructor(
-    private http: HttpClient,
-    @Inject('BASE_URL') private baseUrl: string,
+    private musicService: MusicService,
     private router: Router) { }
 
   public saveSong() {
-    this.http.post(this.baseUrl + 'api/songs', this.song).subscribe(result => {
+    this.musicService.saveSong(this.song).subscribe(result => {
       this.router.navigateByUrl("/music");
     }, error => console.error(error))
   }

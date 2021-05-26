@@ -25,7 +25,6 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +35,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MusicComponent,
     MusicAddComponent,
     MusicEditComponent,
-    MusicReadComponent
+    MusicReadComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

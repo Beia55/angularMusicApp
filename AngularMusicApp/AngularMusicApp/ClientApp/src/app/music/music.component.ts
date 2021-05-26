@@ -1,11 +1,6 @@
-import { Component, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import { Song } from './music.models';
-
-
-
-/*export class ButtonOverviewExample { }*/
-
+import { MusicService } from './music.service';
 
 @Component({
   selector: 'app-music',
@@ -18,7 +13,7 @@ export class MusicComponent {
 
   columnsToDisplay: string[] = [ 'name', 'year', 'composer','actions'];
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
+  constructor(private musicService: MusicService) {
     this.loadMusic();
   }
 
@@ -26,7 +21,7 @@ export class MusicComponent {
   {
     var ans = confirm("Do you want to delete the song with the name: " + song.name);
     if (ans) {
-      this.http.delete(this.baseUrl + 'api/songs/' + song.id).subscribe(result => {
+      this.musicService.deleteSong(song).subscribe(result => {
         this.loadMusic();
       }, error => console.error(error));
     }
@@ -34,7 +29,7 @@ export class MusicComponent {
 
   public loadMusic ()
   {
-    this.http.get<Song[]>(this.baseUrl + 'api/songs').subscribe(result => {
+    this.musicService.loadMusic().subscribe(result => {
       this.songs = result;
     }, error => console.error(error));
   }

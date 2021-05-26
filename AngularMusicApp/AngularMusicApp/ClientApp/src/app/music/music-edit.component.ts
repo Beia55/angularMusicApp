@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Song } from './music.models';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { MusicService } from './music.service';
 
 export class InputOverviewExample { }
 
@@ -18,8 +19,7 @@ export class MusicEditComponent implements OnInit {
   public song: Song = <Song>{};
 
   constructor(
-    private http: HttpClient,
-    @Inject('BASE_URL') private baseUrl: string,
+    private musicService: MusicService,
     private router: Router,
     private activateRouter: ActivatedRoute) { }
 
@@ -32,16 +32,15 @@ export class MusicEditComponent implements OnInit {
   }
 
   public loadSong() {
-    this.http.get<Song>(this.baseUrl + 'api/songs/' + this.id).subscribe(result => {
+    this.musicService.loadSongByID(this.id).subscribe(result => {
       this.song = result;
     }, error => console.error(error))
   }
 
   public saveEditedSong() {
-    this.http.put<Song>(this.baseUrl + 'api/songs/' + this.id, this.song).subscribe(result => {
+    this.musicService.saveEditedSong(this.id, this.song).subscribe(result => {
       this.router.navigateByUrl("/music");  
     }, error => console.error(error))
-
   }
 
 }
