@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using AngularMusicApp.Models;
 
 namespace AngularMusicApp.Data
 {
-    public class AngularMusicAppContext : DbContext
+    public class AngularMusicAppContext : IdentityDbContext
     {
         public DbSet<AngularMusicApp.Models.Song> Song { get; set; }
 
